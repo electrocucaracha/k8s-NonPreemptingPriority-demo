@@ -1,0 +1,4 @@
+.vagrant/
+.tox/
+.*.swp
+*.log
