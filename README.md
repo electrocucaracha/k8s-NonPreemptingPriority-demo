@@ -14,12 +14,12 @@ the `NonPreemptingPriority` feature gate enabled with the
 ## Setup
 
 This project uses [Vagrant tool][2] for provisioning Virtual Machines
-automatically. The [setup](setup.sh) bash script contains the
-Linux instructions for installing dependencies and plugins
-required for its usage. This script supports two Virtualization
-providers (Libvirt and VirtualBox).
+automatically. It's highly recommended to use the  *setup.sh* script
+of the [bootstrap-vagrant project][3] for installing Vagrant
+dependencies and plugins required for its project. The script
+supports two Virtualization providers (Libvirt and VirtualBox).
 
-    $ ./setup.sh -p libvirt
+    $ curl -fsSL https://raw.githubusercontent.com/electrocucaracha/bootstrap-vagrant/master/setup.sh | PROVIDER=libvirt bash
 
 Once Vagrant is installed, it's possible to deploy the demo with the
 following instruction:
@@ -47,3 +47,4 @@ Apache-2.0
 
 [1]: https://github.com/kubernetes-sigs/kubespray
 [2]: https://www.vagrantup.com/
+[3]: https://github.com/electrocucaracha/bootstrap-vagrant
