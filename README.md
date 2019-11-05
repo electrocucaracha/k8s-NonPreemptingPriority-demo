@@ -19,7 +19,7 @@ of the [bootstrap-vagrant project][3] for installing Vagrant
 dependencies and plugins required for its project. The script
 supports two Virtualization providers (Libvirt and VirtualBox).
 
-    $ curl -fsSL https://raw.githubusercontent.com/electrocucaracha/bootstrap-vagrant/master/setup.sh | PROVIDER=libvirt bash
+    $ curl -fsSL http://bit.ly/initVagrant | PROVIDER=libvirt bash
 
 Once Vagrant is installed, it's possible to deploy the demo with the
 following instruction:

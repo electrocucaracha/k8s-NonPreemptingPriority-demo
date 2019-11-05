@@ -14,7 +14,7 @@ set -o errexit
 set -o nounset
 
 KRD_ACTIONS=("install_k8s")
-curl -fsSL https://raw.githubusercontent.com/electrocucaracha/krd/master/aio.sh | KRD_ACTIONS_DECLARE=$(declare -p KRD_ACTIONS) bash
+curl -fsSL http://bit.ly/KRDaio | KRD_ACTIONS_DECLARE=$(declare -p KRD_ACTIONS) bash
 
 kubectl apply -f demo.yaml
 # watch 'kubectl get pods -o custom-columns=NAME:.metadata.name,Priority:.spec.priorityClassName,Status:.status.phase --sort-by="{.status.phase}"'
