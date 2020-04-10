@@ -13,8 +13,24 @@ set -o xtrace
 set -o errexit
 set -o nounset
 
-KRD_ACTIONS=("install_k8s")
-curl -fsSL http://bit.ly/KRDaio | KRD_ACTIONS_DECLARE=$(declare -p KRD_ACTIONS) bash
+# Install dependencies
+pkgs=""
+for pkg in docker kind kubectl; do
+    if ! command -v "$pkg"; then
+        pkgs+=" $pkg"
+    fi
+done
+if [ -n "$pkgs" ]; then
+    curl -fsSL http://bit.ly/install_pkg | PKG=$pkgs bash
+fi
 
+# Create a Kubernetes cluster
+newgrp docker <<EONG
+if ! kind get clusters -q | grep aio; then
+    kind create cluster --name aio --config=./kind-config.yaml
+fi
+EONG
+
+# Deploy demo
 kubectl apply -f demo.yaml
 # watch 'kubectl get pods -o custom-columns=NAME:.metadata.name,Priority:.spec.priorityClassName,Status:.status.phase --sort-by="{.status.phase}"'

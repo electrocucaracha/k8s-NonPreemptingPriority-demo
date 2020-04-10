@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision 'shell', privileged: false do |sh|
     sh.inline = <<-SHELL
       cd /vagrant/
-      ./installer.sh | tee installer.log
+      ./installer.sh | tee ~/installer.log
     SHELL
   end
 
