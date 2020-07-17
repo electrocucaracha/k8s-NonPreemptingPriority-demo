@@ -27,7 +27,18 @@ fi
 # Create a Kubernetes cluster
 newgrp docker <<EONG
 if ! kind get clusters -q | grep aio; then
-    kind create cluster --name aio --config=./kind-config.yaml
+    cat << EOF | kind create cluster --name aio --config=-
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+kubeadmConfigPatches:
+- |
+  kind: ClusterConfiguration
+  metadata:
+    name: config
+  scheduler:
+    extraArgs:
+      "feature-gates": "NonPreemptingPriority=true"
+EOF
 fi
 EONG
 
