@@ -1,5 +1,6 @@
 # Kubernetes NonPreemptingPriority gate feature demo
 [![Build Status](https://travis-ci.org/electrocucaracha/k8s-NonPreemptingPriority-demo.png)](https://travis-ci.org/electrocucaracha/k8s-NonPreemptingPriority-demo)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 In Kubernetes, _Priority_ determines the importance of a Pod to other
 Pods and _Preemption_ is the logic which tries to find a Node to
@@ -40,10 +41,6 @@ preemption process.
 As you can see, the jobs of the `urgent-job` have preference in the 
 queue during the execution of the jobs without any preempt action over
 the existing Pods of `trivial-job`.
-
-## License
-
-Apache-2.0
 
 [1]: https://github.com/kubernetes-sigs/kubespray
 [2]: https://www.vagrantup.com/
