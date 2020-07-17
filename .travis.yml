@@ -1,13 +1,29 @@
-matrix:
-  include:
-    - language: python
+---
+# SPDX-license-identifier: Apache-2.0
+##############################################################################
+# Copyright (c) 2020
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
+
+os: linux
+git:
+  depth: 1
+dist: bionic
+cache:
+  directories:
+    - /home/travis/.vagrant.d/boxes
+jobs:
+    - name: Lint validation
+      language: python
       install:
         - pip install tox
       script:
-        - tox
-      env:
-        - TOXENV=lint
-
-    - language: shell
-      script:
+        - tox -e lint
         - bash -c 'shopt -s globstar; shellcheck -x **/*.sh'
+    - name: E2E validation
+      language: shell
+      script:
+        - ./installer.sh
